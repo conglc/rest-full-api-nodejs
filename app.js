@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 const productRoutes = require('./api/routes/product.route');
 const orderRoutes = require('./api/routes/order.route');
+const userRoutes = require('./api/routes/user.route');
 
 
 mongoose.connect("mongodb://admin:admin123@ds259351.mlab.com:59351/testting");
@@ -33,6 +34,7 @@ app.use((req, res, next) => {
 
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
+app.use('/users', userRoutes);
 
 app.use((req, res, next) => {
   console.log('here');
