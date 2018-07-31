@@ -13,6 +13,8 @@ mongoose.connect("mongodb://admin:admin123@ds259351.mlab.com:59351/testting");
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use('/uploads', express.static('uploads'));
+
 
 
 app.use((req, res, next) => {
