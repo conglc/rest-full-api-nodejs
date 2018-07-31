@@ -7,13 +7,11 @@ const Product = require('../models/product.model');
 router.get("/", (req, res, next) => {
   Product.find()
     .exec()
-    .then(docs => {
-      console.log(docs);
+    .then(docs => {      
       res.status(200).json(docs);
 
     })
-    .catch(err => {
-      console.log(err);
+    .catch(err => {      
       res.status(500).json({
         error: err
       });
@@ -28,15 +26,13 @@ router.post("/", (req, res, next) => {
   });
   product
     .save()
-    .then(result => {
-      console.log(result);
+    .then(result => {      
       res.status(201).json({
         message: "Handling POST requests to /products",
         createdProduct: result
       });
     })
-    .catch(err => {
-      console.log(err);
+    .catch(err => {      
       res.status(500).json({
         error: err
       });
