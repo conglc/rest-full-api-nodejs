@@ -1,30 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-  res.status(200).json({
-    message: 'Orders were fetched'
-  });
-});
+const orderController = require('../controllers/order.controller');
 
-router.post('/', (req, res, next) => {
-  res.status(201).json({
-    message: 'Order was created'
-  });
-});
+router.get('/', orderController.orders_get_all);
 
-router.get('/:orderId', (req, res, next) => {
-  res.status(200).json({
-    message: 'Order details v3',
-    orderId: req.params.orderId
-  });
-});
+router.post('/', orderController.orders_create);
 
-router.delete('/:orderId', (req, res, next) => {
-  res.status(200).json({
-    message: 'Order deleted',
-    orderId: req.params.orderId
-  });
-});
+router.get('/:orderId', orderController.orders_get_by_id);
+
+router.delete('/:orderId', orderController.orders_delete);
 
 module.exports = router;
